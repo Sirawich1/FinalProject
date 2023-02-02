@@ -9,6 +9,7 @@ use App\Models\motorcycle_brand;
 use App\Models\motorcycle_model;
 use App\Models\motorcycles_color;
 use App\Models\order;
+use App\Models\parts;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
@@ -64,6 +65,16 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'deleted successfully!');
     }
 
+    //part
+    public function showPartPage()
+    {    
+        $showparts = parts::all();
+        return view('Allpart',compact('showparts'));
+    }
+    public function addpartPage()
+    {    
+        return view('AddPart');
+    }
 
 
     // public function select_brands()
@@ -131,5 +142,19 @@ class AdminController extends Controller
 
         
 
+    }
+
+    public function insert_parts(Request $request)
+    {
+        $new_part = new parts;
+        $new_part->Parts_Name = $request->Name;
+        $new_part->Parts_UnitPrice = $request->Price;
+        $new_part->Parts_InStock = $request->Unit;
+        $new_part->Parts_img = $request->Descript;
+        $new_part->Parts_Description = $request->img;
+        $new_part->save();
+
+        $showparts = parts::all();
+        return redirect('/Allpart');
     }
 }

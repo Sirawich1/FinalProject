@@ -41,8 +41,14 @@ Route::middleware([
 Route::get('/AllCar', [AdminController::class, 'index'])->name('AllCar');
 Route::get('/addcar', [AdminController::class, 'addPage'])->name('addcar');
 
+Route::get('/Allpart', [AdminController::class, 'showPartPage'])->name('Allpart');
+Route::get('/AddPart', [AdminController::class, 'addpartPage'])->name('addpart');
+
+
 //Insert
 Route::post('/add_motorcycle',[AdminController::class,'insert_motocycles'])->name('add_motorcycle');
+
+Route::post('/add_parts',[AdminController::class,'insert_parts'])->name('add_parts');
 
 
 
@@ -65,3 +71,4 @@ Route::get('/reserveCar',[AdminController::class,'reserveCarPage'])->name('reser
 
 Route::get('/getBrand/{id}', [AdminController::class,'getBrand'])->name('getBrand');
 Route::get('/getColor/{id}', [AdminController::class,'getColor'])->name('getColor');
+

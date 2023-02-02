@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string("Parts_img");
             $table->string("Parts_Description");
             $table->timestamps();
+            $table->SoftDeletes();
         });
     }
 
